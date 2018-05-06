@@ -30,25 +30,28 @@ class Physicians extends Component {
     renderPhysicians = () => {
         const { physicians } = this.state;
         return (
-            <ul className="physicians">
-                {physicians && physicians.map((physician) => {
-                    return (
-                        <li 
-                            key={physician.id} 
-                            onClick={this.goToAppointments} 
-                            value={physician.id}> 
-                            Name : {physician.name}
-                        </li>
-                    );
-                })}
-            </ul>
+            <div className="physicians">
+                <div className="header"> physicians </div>
+                <ul className="physicians-list">
+                    {physicians && physicians.map((physician) => {
+                        return (
+                            <li 
+                                key={physician.id} 
+                                onClick={this.goToAppointments} 
+                                value={physician.id}> 
+                                Name : {physician.name}
+                            </li>
+                        );
+                    })}
+                </ul>
+            </div>
         );
     };
 
     render() {
         const { physicianId } = this.state;
         return (
-            <div className="container">
+            <div className="container row">
                 {this.renderPhysicians()}
                 {<Appointments {...{physicianId}} />}
             </div>
