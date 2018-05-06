@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../styles/physicians';
+import '../styles/physicians.scss';
 
 class Physicians extends Component {
 
