@@ -46,7 +46,7 @@ class Physicians extends Component {
     };
 
     render() {
-        const { physicians, physicianId } = this.state;
+        const { physicianId } = this.state;
         return (
             <div className="container">
                 {this.renderPhysicians()}
