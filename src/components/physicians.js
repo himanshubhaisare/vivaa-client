@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import '../styles/physicians.scss';
 import fetch from 'node-fetch';
+import Appointments from '../components/appointments';
 
 class Physicians extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            physicians: null
+            physicians: null,
+            physicianId: null
         }
     };
 
@@ -17,13 +19,38 @@ class Physicians extends Component {
         this.setState({ physicians });
     };
 
-    render() {
+    goToAppointments = (e) => {
+        e.preventDefault();
+        const physicianId = e.target.value;
+        if (physicianId !== null && physicianId !== undefined) {
+            this.setState({physicianId});
+        }
+    };
+
+    renderPhysicians = () => {
         const { physicians } = this.state;
         return (
-            <div className="physicians">
-                {physicians && physicians.map((physician, i) => {
-                    return (<div key={i}> Name : {physician.name}</div>);
+            <ul className="physicians">
+                {physicians && physicians.map((physician) => {
+                    return (
+                        <li 
+                            key={physician.id} 
+                            onClick={this.goToAppointments} 
+                            value={physician.id}> 
+                            Name : {physician.name}
+                        </li>
+                    );
                 })}
+            </ul>
+        );
+    };
+
+    render() {
+        const { physicians, physicianId } = this.state;
+        return (
+            <div className="container">
+                {this.renderPhysicians()}
+                {<Appointments {...{physicianId}} />}
             </div>
         );
     }

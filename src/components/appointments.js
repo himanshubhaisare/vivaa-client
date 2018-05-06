@@ -18,20 +18,29 @@ class Appointments extends Component {
   componentDidMount = async () => {
     const { physicianId } = this.props;
     if (physicianId != null) {
-      const appointments = await fetch(`http://localhost:4000/physicians/${physicianId}appointments`)
+      const appointments = await fetch(`http://localhost:4000/physicians/${physicianId}/appointments`)
         .then(res => res.json());
       this.setState({ appointments })
     }
-  }
+  };
+
+  componentWillReceiveProps = async (nextProps) => {
+    const { physicianId } = nextProps;
+    if (physicianId != null) {
+      const appointments = await fetch(`http://localhost:4000/physicians/${physicianId}/appointments`)
+        .then(res => res.json());
+      this.setState({ appointments })
+    }
+  };
 
   render() {
     const { appointments } = this.state;
     return (
-      <div className="appointments">
+      <ul className="appointments">
         {appointments && appointments.map((appointment, i) => {
-          return (<div key={i}>Name : {appointment.name}, </div>);
+          return (<li key={i}>Name : {appointment.name}, </li>);
         })}
-      </div>
+      </ul>
     );
   }
 }
