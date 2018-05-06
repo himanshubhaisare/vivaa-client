@@ -38,7 +38,7 @@ class Appointments extends Component {
     return (
       <ul className="appointments">
         {appointments && appointments.map((appointment, i) => {
-          return (<li key={i}>Name : {appointment.name}, </li>);
+          return (<li key={i}>{appointment.name}, </li>);
         })}
       </ul>
     );

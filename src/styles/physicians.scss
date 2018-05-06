@@ -1,9 +1,17 @@
 .physicians {
-    
+    background: rgba($color: #000000, $alpha: 0.1);
+    padding-right: 30px;
+
+    ul {
+        list-style-type: circle;
+        cursor: pointer;
+    }
+
     .header {
+        padding: 10px 20px;
         color: black;
-        font-size: 15px;
-        font-weight: 500;
+        font-size: 14px;
+        font-weight: 600;
         text-transform: uppercase
     }
 }

@@ -39,7 +39,7 @@ class Physicians extends Component {
                                 key={physician.id} 
                                 onClick={this.goToAppointments} 
                                 value={physician.id}> 
-                                Name : {physician.name}
+                                {physician.name}
                             </li>
                         );
                     })}
