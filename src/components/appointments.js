@@ -5,7 +5,8 @@ import '../styles/appointments.scss';
 class Appointments extends Component {
 
   static propTypes = {
-    physicianId: PropTypes.number
+    physicianId: PropTypes.number,
+    name: PropTypes.string
   };
 
   constructor(props) {
@@ -35,12 +36,16 @@ class Appointments extends Component {
 
   render() {
     const { appointments } = this.state;
+    const {name} = this.props;
+
     return (
-      <ul className="appointments">
+      <div className="appointments">
+        <div className="physician-name"> {name} </div>
+        <div className="headers"> </div>
         {appointments && appointments.map((appointment, i) => {
           return (<li key={i}>{appointment.name}, </li>);
         })}
-      </ul>
+      </div>
     );
   }
 }

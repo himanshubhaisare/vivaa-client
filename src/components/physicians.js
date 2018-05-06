@@ -49,11 +49,14 @@ class Physicians extends Component {
     };
 
     render() {
-        const { physicianId } = this.state;
+        let name = "";
+        const { physicianId, physicians } = this.state;
+        const physician = physicians && physicians.find(({id}) => id == physicianId);
+        name = physician && physician.name;
         return (
             <div className="container row">
                 {this.renderPhysicians()}
-                {<Appointments {...{physicianId}} />}
+                {<Appointments {...{physicianId, name}} />}
             </div>
         );
     }
