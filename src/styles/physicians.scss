@@ -4,7 +4,12 @@
 
     ul {
         list-style-type: circle;
-        cursor: pointer;
+        cursor: pointer
+    }
+    
+    ul li:hover {
+        background: rgba($color: teal, $alpha: 1);
+        color: white
     }
 
     .header {
