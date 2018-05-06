@@ -14,20 +14,19 @@ class Physicians extends Component {
     componentDidMount = async () => {
         const physicians = await fetch('http://localhost:4000/physicians')
             .then(res => res.json());
-        this.setState({physicians})
-        console.log(physicians);
+        this.setState({ physicians });
     };
 
     render() {
-        const {physicians} = this.state;
+        const { physicians } = this.state;
         return (
             <div className="physicians">
-            {physicians && physicians.map( physician => {
-                return (<h5>Name : {physician.name}</h5>);
-            })}
+                {physicians && physicians.map((physician, i) => {
+                    return (<div key={i}> Name : {physician.name}</div>);
+                })}
             </div>
         );
     }
-  }
-  
+}
+
 export default Physicians;

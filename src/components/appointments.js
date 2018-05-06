@@ -1,15 +1,39 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import '../styles/appointments.scss';
 
 class Appointments extends Component {
 
-    render() {
-      return (
-        <div className="appointments">
-          These are appointments
-        </div>
-      );
+  static propTypes = {
+    physicianId: PropTypes.number
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      appointments: null
+    }
+  };
+
+  componentDidMount = async () => {
+    const { physicianId } = this.props;
+    if (physicianId != null) {
+      const appointments = await fetch(`http://localhost:4000/physicians/${physicianId}appointments`)
+        .then(res => res.json());
+      this.setState({ appointments })
     }
   }
-  
+
+  render() {
+    const { appointments } = this.state;
+    return (
+      <div className="appointments">
+        {appointments && appointments.map((appointment, i) => {
+          return (<div key={i}>Name : {appointment.name}, </div>);
+        })}
+      </div>
+    );
+  }
+}
+
 export default Appointments;
