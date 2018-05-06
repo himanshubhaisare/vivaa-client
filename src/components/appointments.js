@@ -39,11 +39,23 @@ class Appointments extends Component {
     const {name} = this.props;
 
     return (
-      <div className="appointments">
+      <div className="appointments col">
         <div className="physician-name"> {name} </div>
-        <div className="headers"> </div>
+        <div className="headers row"> 
+          <div className="col"> # </div>
+          <div className="col"> Name </div>
+          <div className="col"> Time </div>
+          <div className="col"> Type </div>
+        </div>
         {appointments && appointments.map((appointment, i) => {
-          return (<li key={i}>{appointment.name}, </li>);
+          return (
+            <div className="appointment row" key={i}>
+              <div className="col"> {i+1} </div>
+              <div className="col"> {appointment.name} </div>
+              <div className="col"> {appointment.time} </div>
+              <div className="col"> {appointment.type} </div>
+            </div>
+          );
         })}
       </div>
     );

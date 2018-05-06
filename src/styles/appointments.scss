@@ -1,10 +1,27 @@
 .appointments {
     font-size: 14px;
-    padding-left: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
 
     .physician-name {
         font-size: 26px;
         font-weight: 600;
         color: black
+    }
+
+    .headers {
+        font-weight: 600;
+        background: rgba($color: grey, $alpha: 0.1);
+        border: 1px solid grey
+    }
+
+    .appointment {
+        border-left: 1px solid grey;
+        border-right: 1px solid grey;
+        border-bottom: 1px solid grey;
+    }
+    
+    .row {
+        margin-left: 0px;
     }
 }

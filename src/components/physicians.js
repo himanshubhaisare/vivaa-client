@@ -30,7 +30,7 @@ class Physicians extends Component {
     renderPhysicians = () => {
         const { physicians } = this.state;
         return (
-            <div className="physicians">
+            <div className="physicians col-xs-8">
                 <div className="header"> physicians </div>
                 <ul className="physicians-list">
                     {physicians && physicians.map((physician) => {
@@ -54,7 +54,7 @@ class Physicians extends Component {
         const physician = physicians && physicians.find(({id}) => id == physicianId);
         name = physician && physician.name;
         return (
-            <div className="container row">
+            <div className="row">
                 {this.renderPhysicians()}
                 {<Appointments {...{physicianId, name}} />}
             </div>
